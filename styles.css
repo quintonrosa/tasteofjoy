@@ -13,7 +13,9 @@
   --shadow: 0 12px 35px rgba(76, 44, 32, 0.09);
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -67,7 +69,9 @@ textarea:focus-visible {
 input,
 select,
 textarea {
+  display: block;
   width: 100%;
+  max-width: 100%;
   min-height: 48px;
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -214,10 +218,12 @@ main {
 }
 
 .section {
+  width: 100%;
   margin: 30px 0;
 }
 
 .card {
+  width: 100%;
   padding: clamp(20px, 4vw, 34px);
   border: 1px solid var(--border);
   border-radius: 20px;
@@ -234,6 +240,7 @@ main {
 }
 
 .menu-category {
+  width: 100%;
   margin-bottom: 34px;
 }
 
@@ -243,6 +250,7 @@ main {
 }
 
 .cookie-group {
+  width: 100%;
   margin: 12px 0;
   overflow: hidden;
   border: 1px solid var(--border);
@@ -268,6 +276,7 @@ main {
 
 .cookie-group summary::after {
   content: "+";
+  flex: 0 0 auto;
   color: var(--orange);
   font-size: 1.4rem;
 }
@@ -278,19 +287,20 @@ main {
 
 .cookie-group summary small {
   margin-left: auto;
+  text-align: right;
   font-weight: 400;
 }
 
 .cookie-table-wrap {
   width: 100%;
-  overflow-x: auto;
+  overflow: hidden;
   border-top: 1px solid var(--border);
-  -webkit-overflow-scrolling: touch;
 }
 
 .cookie-table {
   width: 100%;
-  min-width: 430px;
+  max-width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
 }
 
@@ -304,15 +314,27 @@ main {
 
 .cookie-table th,
 .cookie-table td {
-  padding: 13px 14px;
+  width: 33.333%;
+  padding: 12px 8px;
   border-bottom: 1px solid var(--border);
   text-align: left;
   vertical-align: middle;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 .cookie-table th {
   background: var(--soft);
-  font-size: 0.86rem;
+  font-size: 0.8rem;
+}
+
+.cookie-table td {
+  font-size: 0.9rem;
+}
+
+.cookie-table th:last-child,
+.cookie-table td:last-child {
+  text-align: center;
 }
 
 .cookie-table tbody tr:last-child td {
@@ -320,11 +342,14 @@ main {
 }
 
 .cookie-table button {
-  min-height: 44px;
-  padding: 8px 14px;
+  width: 100%;
+  min-height: 40px;
+  padding: 7px 5px;
   background: var(--orange);
   color: #fff;
+  font-size: 0.85rem;
   font-weight: 700;
+  white-space: normal;
 }
 
 .cookie-table button:hover {
@@ -349,6 +374,7 @@ main {
 }
 
 fieldset {
+  min-width: 0;
   margin: 0;
   padding: 0;
   border: 0;
@@ -374,6 +400,7 @@ legend {
 
 .choice span,
 .checkbox-choice span {
+  min-width: 0;
   flex: 1;
 }
 
@@ -397,13 +424,23 @@ legend {
 .field-block {
   display: grid;
   gap: 12px;
+  width: 100%;
   margin-top: 18px;
 }
 
 .date-box {
   display: grid;
   gap: 10px;
-  max-width: 620px;
+  width: 100%;
+  max-width: none;
+}
+
+.date-box input[type="date"] {
+  width: 100%;
+  max-width: 100%;
+  min-height: 48px;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .date-help {
@@ -425,6 +462,7 @@ legend {
 }
 
 .payment-box {
+  width: 100%;
   margin-top: 18px;
   padding: 20px;
   border: 1px solid var(--border);
@@ -708,16 +746,27 @@ legend {
   }
 
   .mobile-scroll-note {
-    display: block;
+    display: none;
   }
 
   .cookie-group summary {
     align-items: flex-start;
-    flex-direction: column;
   }
 
   .cookie-group summary small {
     margin-left: 0;
+    text-align: left;
+  }
+
+  .cookie-table th,
+  .cookie-table td {
+    padding: 10px 5px;
+    font-size: 0.82rem;
+  }
+
+  .cookie-table button {
+    min-height: 38px;
+    font-size: 0.78rem;
   }
 
   .order-line {
@@ -757,8 +806,15 @@ legend {
     width: min(calc(100% - 20px), 390px);
   }
 
-  .cookie-table {
-    min-width: 430px;
+  .cookie-table th,
+  .cookie-table td {
+    padding: 9px 4px;
+    font-size: 0.76rem;
+  }
+
+  .cookie-table button {
+    padding: 6px 3px;
+    font-size: 0.72rem;
   }
 
   .total-row,
