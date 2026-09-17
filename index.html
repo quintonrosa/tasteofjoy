@@ -19,7 +19,7 @@
 
   <link
     rel="stylesheet"
-    href="styles.css">
+    href="./styles.css">
 </head>
 
 <body>
@@ -61,6 +61,519 @@
           Choose a cookie size to view the available quantities.
         </p>
       </div>
+
+      <div id="menu">
+        <p class="muted">
+          Loading cookie packages...
+        </p>
+      </div>
+    </section>
+
+    <form
+      id="orderForm"
+      class="order-form"
+      novalidate>
+
+      <section class="section card">
+        <div class="section-heading">
+          <p class="eyebrow">Your order</p>
+
+          <h2>Your order</h2>
+        </div>
+
+        <div id="cart">
+          <p class="muted">
+            Your order is empty.
+          </p>
+        </div>
+
+        <div class="total-row">
+          <span>Total</span>
+
+          <strong id="pageOrderTotal">
+            XCG 0.00
+          </strong>
+        </div>
+      </section>
+
+      <section class="section card">
+        <div class="section-heading">
+          <p class="eyebrow">Packaging</p>
+
+          <h2>Packaging &amp; special requests</h2>
+        </div>
+
+        <fieldset>
+          <legend>Packaging preference</legend>
+
+          <label class="choice">
+            <input
+              type="radio"
+              name="packaging"
+              value="standard"
+              checked>
+
+            <span>
+              <b>Standard packaging</b>
+
+              <small>
+                Cookies packed in standard Taste of Joy packaging.
+              </small>
+            </span>
+          </label>
+
+          <label class="choice">
+            <input
+              type="radio"
+              name="packaging"
+              value="other">
+
+            <span>
+              <b>Other packaging or special request</b>
+
+              <small>
+                Price to be confirmed.
+              </small>
+            </span>
+          </label>
+        </fieldset>
+
+        <div
+          id="specialRequest"
+          class="hidden field-block">
+
+          <label for="specialRequestText">
+            Describe your packaging or special request
+          </label>
+
+          <textarea
+            id="specialRequestText"
+            name="specialRequestText"
+            placeholder="Describe your packaging or special request"></textarea>
+        </div>
+      </section>
+
+      <section class="section card">
+        <div class="section-heading">
+          <p class="eyebrow">Fulfillment</p>
+
+          <h2>Pickup or delivery</h2>
+        </div>
+
+        <fieldset>
+          <legend>Choose an option</legend>
+
+          <label class="choice">
+            <input
+              type="radio"
+              name="fulfillment"
+              value="pickup"
+              checked>
+
+            <span>
+              <b>Pickup</b>
+
+              <small>
+                Pickup from Grote Berg, Kaya H11.
+              </small>
+            </span>
+          </label>
+
+          <label class="choice">
+            <input
+              type="radio"
+              name="fulfillment"
+              value="delivery">
+
+            <span>
+              <b>Delivery</b>
+
+              <small>
+                Delivery fee depends on your district.
+              </small>
+            </span>
+          </label>
+        </fieldset>
+
+        <div
+          id="deliveryFields"
+          class="hidden field-block">
+
+          <label for="district">
+            Delivery district
+          </label>
+
+          <select
+            id="district"
+            name="district">
+
+            <option value="">
+              Select a district
+            </option>
+
+            <option value="1">
+              District 1 — XCG 7.50
+            </option>
+
+            <option value="2">
+              District 2 — XCG 7.50
+            </option>
+
+            <option value="3">
+              District 3 — XCG 15.00
+            </option>
+          </select>
+
+          <label for="address">
+            Delivery address
+          </label>
+
+          <textarea
+            id="address"
+            name="address"
+            placeholder="Enter your delivery address"></textarea>
+
+          <label for="instructions">
+            Delivery instructions
+          </label>
+
+          <textarea
+            id="instructions"
+            name="instructions"
+            placeholder="Add delivery instructions, if needed"></textarea>
+        </div>
+      </section>
+
+      <section class="section card">
+        <div class="section-heading">
+          <p class="eyebrow">Date</p>
+
+          <h2>Next available pickup/delivery date</h2>
+
+          <p>
+            The first available date is at least 4 calendar days from today.
+          </p>
+        </div>
+
+        <div class="date-box">
+          <label for="orderDate">
+            Choose date
+          </label>
+
+          <input
+            id="orderDate"
+            name="orderDate"
+            type="date"
+            required>
+
+          <p
+            id="dateMinimumMessage"
+            class="date-help">
+          </p>
+
+          <p class="selected-date-label">
+            Selected date
+          </p>
+
+          <strong id="selectedDateWords">
+            No date selected
+          </strong>
+
+          <label for="dateNote">
+            Additional delivery information
+          </label>
+
+          <textarea
+            id="dateNote"
+            name="dateNote"
+            placeholder="Add additional delivery information, if needed"></textarea>
+        </div>
+      </section>
+
+      <section class="section card">
+        <div class="section-heading">
+          <p class="eyebrow">Customer</p>
+
+          <h2>Customer information</h2>
+        </div>
+
+        <div class="form-grid">
+          <div>
+            <label for="customerName">
+              Name
+            </label>
+
+            <input
+              id="customerName"
+              name="customerName"
+              type="text"
+              autocomplete="name"
+              required>
+          </div>
+
+          <div>
+            <label for="phone">
+              Phone number
+            </label>
+
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              inputmode="tel"
+              autocomplete="tel"
+              required>
+          </div>
+
+          <div class="full-width">
+            <label for="email">
+              Email — optional
+            </label>
+
+            <input
+              id="email"
+              name="email"
+              type="email"
+              inputmode="email"
+              autocomplete="email">
+          </div>
+        </div>
+
+        <label class="checkbox-choice">
+          <input
+            id="saveProfile"
+            name="saveProfile"
+            type="checkbox">
+
+          <span>
+            I agree that Taste of Joy may securely save my customer
+            information and order history for future orders.
+          </span>
+        </label>
+      </section>
+
+      <section class="section card">
+        <div class="section-heading">
+          <p class="eyebrow">Payment</p>
+
+          <h2>Payment</h2>
+        </div>
+
+        <fieldset>
+          <legend>Choose a payment method</legend>
+
+          <label class="choice">
+            <input
+              type="radio"
+              name="payment"
+              value="bank"
+              checked>
+
+            <span>
+              <b>Bank transfer</b>
+
+              <small>
+                Upload payment proof before sending the order to WhatsApp.
+              </small>
+            </span>
+          </label>
+
+          <label class="choice">
+            <input
+              type="radio"
+              name="payment"
+              value="cash">
+
+            <span>
+              <b>Cash on delivery</b>
+
+              <small>
+                Exact amount required — no change available.
+              </small>
+            </span>
+          </label>
+        </fieldset>
+
+        <div id="bankFields">
+          <div class="payment-box">
+            <p>
+              <b>Testing bank instructions</b>
+            </p>
+
+            <p>
+              Bank: MCB<br>
+              Account: 27015601
+            </p>
+
+            <div class="payment-reference-box">
+              <span>Payment reference</span>
+
+              <strong id="paymentReference">
+                Generating...
+              </strong>
+
+              <small>
+                Use this reference when making your payment
+                and include it with your payment proof.
+              </small>
+            </div>
+
+            <label for="proof">
+              Upload payment proof
+            </label>
+
+            <input
+              id="proof"
+              name="proof"
+              type="file"
+              accept="image/*,.pdf"
+              capture="environment">
+
+            <small>
+              On a phone, choose a photo from your gallery
+              or take a picture of the receipt.
+            </small>
+
+            <p
+              id="proofRequirementMessage"
+              class="notice">
+
+              Payment proof is required before you can send
+              the order to WhatsApp.
+            </p>
+          </div>
+        </div>
+
+        <div
+          id="cashNotice"
+          class="notice hidden">
+
+          Please have the exact amount ready.
+          Taste of Joy does not carry change.
+        </div>
+      </section>
+
+      <section class="section card">
+        <div class="section-heading">
+          <p class="eyebrow">Review</p>
+
+          <h2>Review and accept</h2>
+        </div>
+
+        <label class="checkbox-choice">
+          <input
+            id="acceptPolicy"
+            name="acceptPolicy"
+            type="checkbox"
+            required>
+
+          <span>
+            I understand the payment requirements and cancellation policy
+            and wish to continue with the order.
+          </span>
+        </label>
+
+        <button
+          id="submitOrder"
+          class="primary-button"
+          type="button"
+          disabled>
+
+          Review order before WhatsApp
+        </button>
+
+        <p
+          id="formMessage"
+          class="notice"
+          aria-live="polite"></p>
+      </section>
+    </form>
+  </main>
+
+  <div
+    id="stickyOrderBar"
+    class="sticky-order-bar">
+
+    <div class="sticky-order-info">
+      <strong id="stickyItems">
+        0 packages
+      </strong>
+
+      <span id="stickyTotal">
+        Total: XCG 0.00
+      </span>
+    </div>
+
+    <button
+      id="stickyReview"
+      class="primary-button"
+      type="button">
+
+      Review order
+    </button>
+  </div>
+
+  <div
+    id="confirmationBackdrop"
+    class="modal-backdrop hidden">
+  </div>
+
+  <section
+    id="confirmationModal"
+    class="modal hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="confirmTitle">
+
+    <button
+      id="confirmationClose"
+      class="modal-close"
+      type="button"
+      aria-label="Close confirmation window">
+
+      ×
+    </button>
+
+    <p class="eyebrow">Final check</p>
+
+    <h2 id="confirmTitle">
+      Confirm your order
+    </h2>
+
+    <p>
+      Please review your order before continuing to WhatsApp.
+    </p>
+
+    <div
+      id="confirmationSummary"
+      class="confirmation-summary">
+    </div>
+
+    <div class="modal-actions">
+      <button
+        id="editOrder"
+        class="secondary-button"
+        type="button">
+
+        Go back and edit
+      </button>
+
+      <button
+        id="confirmOrder"
+        class="primary-button"
+        type="button">
+
+        Confirm and continue to WhatsApp
+      </button>
+    </div>
+  </section>
+
+  <script
+    src="./app.js"
+    defer>
+  </script>
+</body>
+</html>
 
       <div id="menu"></div>
     </section>
