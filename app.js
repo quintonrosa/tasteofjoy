@@ -255,11 +255,11 @@ function localDateString(date = new Date()) {
   ].join("-");
 }
 
-function addDays(date, numberOfDays) {
+function addDays(date, days) {
   const result = new Date(date);
 
   result.setDate(
-    result.getDate() + numberOfDays
+    result.getDate() + days
   );
 
   return result;
@@ -287,7 +287,8 @@ function createOrderReference() {
   paymentReference =
     generatePaymentReference();
 
-  byId("paymentReference").textContent =
+  byId("paymentReference")
+    .textContent =
     paymentReference;
 }
 
@@ -324,22 +325,27 @@ function validatePaymentProof() {
     bankProofIsRequired() &&
     !hasPaymentProof()
   ) {
-    byId("proof").setCustomValidity(
-      "Payment proof is required before sending the order to WhatsApp."
-    );
+    byId("proof")
+      .setCustomValidity(
+        "Payment proof is required before sending the order to WhatsApp."
+      );
 
-    byId("proof").reportValidity();
+    byId("proof")
+      .reportValidity();
 
-    byId("formMessage").textContent =
+    byId("formMessage")
+      .textContent =
       "Please upload your payment proof before continuing.";
 
-    byId("formMessage").className =
+    byId("formMessage")
+      .className =
       "notice error";
 
     return false;
   }
 
-  byId("proof").setCustomValidity("");
+  byId("proof")
+    .setCustomValidity("");
 
   return true;
 }
@@ -348,7 +354,8 @@ function updatePaymentProofRequirement() {
   const required =
     bankProofIsRequired();
 
-  byId("proof").required =
+  byId("proof")
+    .required =
     required;
 
   byId("proofRequirementMessage")
@@ -359,7 +366,8 @@ function updatePaymentProofRequirement() {
     );
 
   if (!required) {
-    byId("proof").setCustomValidity("");
+    byId("proof")
+      .setCustomValidity("");
   }
 }
 
@@ -388,10 +396,6 @@ function formatDateInWords(value) {
     0
   );
 
-  if (Number.isNaN(date.getTime())) {
-    return "No date selected";
-  }
-
   return new Intl.DateTimeFormat(
     "en-US",
     {
@@ -409,7 +413,8 @@ function setMinimumDate() {
       addDays(new Date(), 4)
     );
 
-  byId("orderDate").min =
+  byId("orderDate")
+    .min =
     minimumDate;
 
   byId("dateMinimumMessage")
@@ -593,11 +598,6 @@ function addToCart(id) {
   }
 
   refreshCart();
-
-  byId("cart").scrollIntoView({
-    behavior: "smooth",
-    block: "center"
-  });
 }
 
 function increaseQuantity(id) {
@@ -728,9 +728,9 @@ function renderCart() {
             <div class="quantity-controls">
               <button
                 type="button"
-                aria-label="Decrease quantity"
                 class="decrease-button"
-                data-product-id="${item.id}">
+                data-product-id="${item.id}"
+                aria-label="Decrease quantity">
 
                 −
               </button>
@@ -741,17 +741,17 @@ function renderCart() {
 
               <button
                 type="button"
-                aria-label="Increase quantity"
                 class="increase-button"
-                data-product-id="${item.id}">
+                data-product-id="${item.id}"
+                aria-label="Increase quantity">
 
                 +
               </button>
             </div>
 
             <button
-              class="remove remove-button"
               type="button"
+              class="remove remove-button"
               data-product-id="${item.id}">
 
               Remove
@@ -769,7 +769,9 @@ function renderCart() {
       .join("");
 
   byId("cart")
-    .querySelectorAll(".decrease-button")
+    .querySelectorAll(
+      ".decrease-button"
+    )
     .forEach(button => {
       button.addEventListener(
         "click",
@@ -782,7 +784,9 @@ function renderCart() {
     });
 
   byId("cart")
-    .querySelectorAll(".increase-button")
+    .querySelectorAll(
+      ".increase-button"
+    )
     .forEach(button => {
       button.addEventListener(
         "click",
@@ -795,7 +799,9 @@ function renderCart() {
     });
 
   byId("cart")
-    .querySelectorAll(".remove-button")
+    .querySelectorAll(
+      ".remove-button"
+    )
     .forEach(button => {
       button.addEventListener(
         "click",
@@ -963,7 +969,9 @@ function buildConfirmationSummary() {
 
         <strong>
           ${
-            byId("dateNote").value.trim() ||
+            byId("dateNote")
+              .value
+              .trim() ||
             "None"
           }
         </strong>
@@ -1015,12 +1023,14 @@ function openConfirmationModal() {
       .className =
       "notice error";
 
-    byId("orderDate").scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    });
+    byId("orderDate")
+      .scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
 
-    byId("orderDate").focus();
+    byId("orderDate")
+      .focus();
 
     return;
   }
@@ -1160,7 +1170,9 @@ ${formatDateInWords(
 
 ADDITIONAL DELIVERY INFORMATION
 ${
-    byId("dateNote").value.trim() ||
+    byId("dateNote")
+      .value
+      .trim() ||
     "None"
   }
 
@@ -1321,12 +1333,12 @@ function startApp() {
 }
 
 if (
-  document.readyState ===
-  "loading"
+  document.readyState === "loading"
 ) {
   document.addEventListener(
     "DOMContentLoaded",
-    startApp
+    startApp,
+    { once: true }
   );
 } else {
   startApp();
